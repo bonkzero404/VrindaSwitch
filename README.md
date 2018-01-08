@@ -20,27 +20,17 @@ This example wire using Wemos D1 Mini and Relay Module
 ## Install
 
 ```
-npm install
+Open an arduino IDE then upload to your wemos/nodemcu/ESP8266 board
 ```
 
 ## Usage
 
-```
-[Start Production]
-npm run build && node build/server.js
+After finish compile and upload to your board, open Wifi setting from your smartphone, and search network SSID (ex: Vrinda Switch ESP8266) then insert wpa2 password ('Note: default password is "password" without double quotes') 
 
-[Start Development]
-NODE_ENV=development nodemon src/server.js
+![Alt text](screen-1.png?raw=true "Diagram Concept")
 
-[Build Production]
-NODE_ENV=production webpack -p --profile --display-modules --optimize-minimize
+Open 192.168.4.1
 
-[Build Development]
-webpack -d
-
-[Watcher]
-webpack -d --watch
-```
 
 ## Contribute
 

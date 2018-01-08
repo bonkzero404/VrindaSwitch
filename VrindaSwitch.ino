@@ -1,5 +1,5 @@
 #include <FS.h>                   //this needs to be first, or it all crashes and burns...
-#include <Wire.h> 
+#include <Wire.h>
 #include <ESP8266WiFi.h>          //https://github.com/esp8266/Arduino
 
 //needed for library
@@ -67,16 +67,16 @@ void callback(char* topic, byte* payload, unsigned int length) {
     } else {
       relayStat = "on";
     }
-    
+
     String infoMessage = "{\"ip\":\"" + local_ip + "\",\"ssid\":\"" + local_ssid + "\",\"id\":\"" + deviceID + "\",\"user\":\"" + mqtt_username + "\",\"stat\":\"" + (String)relayStat + "\"}";
     client.publish(("ESP:INFO:" + (String)deviceID).c_str(), infoMessage.c_str());
-  } //info 
+  } //info
   else if((char)payload[0] == 'r' && (char)payload[1] == 'e' && (char)payload[2] == 's' && (char)payload[3] == 'e' && (char)payload[4] == 't') {
     SPIFFS.format();
     WiFiManager wifiManager;
     wifiManager.resetSettings();
     delay(5000);
-  
+
     ESP.reset();
   } //reset
 
@@ -86,32 +86,32 @@ void reconnect() {
   int nFail = 1;
   // Loop until we're reconnected
   while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");    
+    Serial.print("Attempting MQTT connection...");
     // Attempt to connect
     if (client.connect(deviceID.c_str(), mqtt_username, mqtt_password)) {
       Serial.println("connected");
-  
+
       // In Topic
       String inCommand = "ESP:COMMAND:" + deviceID;
-  
+
       // JSON Message
       val = digitalRead(relayPin);
       String relayStat = "off";
-  
+
       if (val == 0) {
         relayStat = "off";
       } else {
         relayStat = "on";
       }
-      
+
       String infoMessage = "{\"ip\":\"" + local_ip + "\",\"ssid\":\"" + local_ssid + "\",\"id\":\"" + deviceID + "\",\"user\":\"" + mqtt_username + "\",\"stat\":\"" + (String)relayStat + "\"}";
-    
+
       // Once connected, publish an announcement...
       client.publish(("ESP:SERVER:" + deviceID).c_str(), infoMessage.c_str());
-      
+
       // ... and resubscribe
       client.subscribe(inCommand.c_str());
-      
+
     } else {
       // Not authorize
       if (client.state() == 5) {
@@ -126,7 +126,7 @@ void reconnect() {
           delay(5000);
           nFail = nFail + 1;
         }
-        
+
       }
       /* ********** Need Help for better way ****
       // Connection refused
@@ -142,7 +142,7 @@ void reconnect() {
           delay(5000);
           nFail = nFail + 1;
         }
-        
+
       }
       */
       else {
@@ -156,15 +156,15 @@ void reconnect() {
 }
 
 String IP2Str(IPAddress address) {
- return String(address[0]) + "." + 
-        String(address[1]) + "." + 
-        String(address[2]) + "." + 
+ return String(address[0]) + "." +
+        String(address[1]) + "." +
+        String(address[2]) + "." +
         String(address[3]);
-}  
+}
 
 void setup() {
   pinMode(relayPin,OUTPUT);
-  
+
   // put your setup code here, to run once:
   Serial.begin(115200);
   Serial.println();
@@ -216,25 +216,25 @@ void setup() {
   // id/name placeholder/prompt default length
   WiFiManagerParameter custom_mqtt_server("server", "MQTT Server", mqtt_server, 40);
   WiFiManagerParameter custom_mqtt_port("port", "MQTT Port", mqtt_port, 5);
-  WiFiManagerParameter custom_mqtt_username("username", "MQTT Username", mqtt_username, 40);  
-  WiFiManagerParameter custom_mqtt_password("password", "MQTT Password", mqtt_password, 40); 
+  WiFiManagerParameter custom_mqtt_username("username", "MQTT Username", mqtt_username, 40);
+  WiFiManagerParameter custom_mqtt_password("password", "MQTT Password", mqtt_password, 40);
 
   //set config save notify callback
   wifiManager.setSaveConfigCallback(saveConfigCallback);
-  
+
   //add all your parameters here
   wifiManager.addParameter(&custom_mqtt_server);
   wifiManager.addParameter(&custom_mqtt_port);
   wifiManager.addParameter(&custom_mqtt_username);
   wifiManager.addParameter(&custom_mqtt_password);
-  
+
   //reset settings - for testing
-  // wifiManager.resetSettings();
+  wifiManager.resetSettings();
 
   //set minimu quality of signal so it ignores AP's under that quality
   //defaults to 8%
   //wifiManager.setMinimumSignalQuality();
-  
+
   //sets timeout until configuration portal gets turned off
   //useful to make it all retry or go to sleep
   //in seconds
@@ -244,7 +244,7 @@ void setup() {
   //if it does not connect it starts an access point with the specified name
   //here  "AutoConnectAP"
   //and goes into a blocking loop awaiting configuration
-  if (!wifiManager.autoConnect("BackBeard ESP8266", "password")) {
+  if (!wifiManager.autoConnect("VrindaSwitch ESP8266", "password")) {
     Serial.println("failed to connect and hit timeout");
     delay(3000);
     //reset and try again, or maybe put it to deep sleep
