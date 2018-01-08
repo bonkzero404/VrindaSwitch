@@ -1,9 +1,13 @@
-# Vrinda Api (Starter Pack Rest API for IoT Platform)
+# Vrinda Switch (ESP8266 Starter Pack Sketch with single relay module)
 
 > There is no description for now.
 
 ## Basic Concept
 ![Alt text](diagram/diagram.png?raw=true "Diagram Concept")
+
+## Example Wire
+This example wire using Wemos D1 Mini and Relay Module
+![Alt text](wemos_relay_bb.png?raw=true "Wemos")
 
 ## Related Packages
 
