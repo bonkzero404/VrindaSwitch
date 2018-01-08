@@ -14,7 +14,7 @@ This example wire using Wemos D1 Mini and Relay Module
 | Package | Docs | Description |
 |---------|------|-------------|
 | [`VrindaApp`](https://github.com/bonkzero404/VrindaApp) |  [![](https://img.shields.io/badge/API%20Docs-markdown-lightgrey.svg?style=flat-square)](/packages/react-router/docs) | Mobile Apps using React Native |
-| [`VrindaApi`](https://github.com/bonkzero404/VrindaApp) | [![](https://img.shields.io/badge/API%20Docs-markdown-lightgrey.svg?style=flat-square)](/packages/react-router-dom/docs) | RestfFul Service for IoT Platform (Include MQTT Server) |
+| [`VrindaApi`](https://github.com/bonkzero404/VrindaApi) | [![](https://img.shields.io/badge/API%20Docs-markdown-lightgrey.svg?style=flat-square)](/packages/react-router-dom/docs) | RestfFul Service for IoT Platform (Include MQTT Server) |
 | [`VrindaSwitch`](https://github.com/bonkzero404/VrindaSwitch) | [![](https://img.shields.io/badge/API%20Docs-markdown-lightgrey.svg?style=flat-square)](/packages/react-router-native/docs) |  Arduino Sketch for single relay module |
 
 ## Install
