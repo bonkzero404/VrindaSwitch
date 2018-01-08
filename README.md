@@ -27,28 +27,23 @@ Open an arduino IDE then upload to your wemos/nodemcu/ESP8266 board
 
 After finish compile and upload to your board, open Wifi setting from your smartphone, and search network SSID (ex: Vrinda Switch ESP8266) then insert wpa2 password ('Note: default password is "password" without double quotes')
 
-<center>
-  <img align="center" width="300" src="https://raw.githubusercontent.com/bonkzero404/VrindaSwitch/master/screen-1.png" />
-</center>
+<img align="center" width="300" src="https://raw.githubusercontent.com/bonkzero404/VrindaSwitch/master/screen-1.png" />
 
 Open 192.168.4.1 from your browser to open captive portal
 
-<center>
-  <img align="center" width="300" src="https://raw.githubusercontent.com/bonkzero404/VrindaSwitch/master/screen-2.png" />
-</center>
+<img align="center" width="300" src="https://raw.githubusercontent.com/bonkzero404/VrindaSwitch/master/screen-2.png" />
 
-Configure local network and MQTT server from captive portal, MQTT server diarahkan pada <a href="https://github.com/bonkzero404/VrindaApi">VrindaApi</a>
+Configure local network and MQTT server from captive portal, MQTT server is directed to <a href="https://github.com/bonkzero404/VrindaApi">VrindaApi</a>
 
-<center>
-  <img align="center" width="300" src="https://raw.githubusercontent.com/bonkzero404/VrindaSwitch/master/screen-3.png" />
-</center>
 
-Save your configuration then enjoy
+<img align="center" width="300" src="https://raw.githubusercontent.com/bonkzero404/VrindaSwitch/master/screen-3.png" />
+
+Save your configuration then enjoy it.
 
 
 ## Contribute
 
-PRs accepted.
+NOTES : this code still Quick and Dirty. PRs accepted.
 
 ## License
 
